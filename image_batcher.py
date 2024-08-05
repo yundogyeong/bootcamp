@@ -15,6 +15,11 @@ def preprocess_image(image_path):
     image = Image.open(image_path)
     image = image.convert(mode='RGB')
     image = resize_to_target(image, 32, 32)
+    
+    # Adding a simple image augmentation step: 
+    # For example : horizontal flip
+    # image = ImageOps.mirror(image)
+    
     image = np.asarray(image, dtype=np.float32)
     image = image / 255.0
     image = np.transpose(image, (2, 0, 1))
